@@ -1,5 +1,5 @@
 {
-  "name": "ephemeral-codes",
+  "name": "@soufantech/ephemeral-codes",
   "version": "1.0.0-rc.1",
   "description": "Manage CRUD operations on ephemeral token codes.",
   "keywords": ["redis", "token", "code"],
