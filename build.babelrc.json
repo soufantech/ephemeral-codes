@@ -1,0 +1,4 @@
+{
+  "extends": "./.babelrc.json",
+  "ignore": ["**/__tests__/**", "**/__mocks__/**", "**/__fixtures__/**"]
+}

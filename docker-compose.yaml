@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:5-alpine
+    ports:
+      - ${REDIS_PORT:-6379}:${REDIS_PORT:-6379}
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "${REDIS_PORT}", "PING", "|", "grep", "-q", "PONG"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    environment:
+      - REDISCLI_AUTH=${REDISCLI_AUTH}
+    volumes:
+      - ./docker/redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - redis_data:/data
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass ${REDISCLI_AUTH} --port ${REDIS_PORT:-6379}
+
+volumes:
+  redis_data: null

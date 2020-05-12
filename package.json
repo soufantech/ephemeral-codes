@@ -1,0 +1,62 @@
+{
+  "name": "ephemeral-codes",
+  "version": "1.0.0-rc.1",
+  "description": "Manage CRUD operations on ephemeral token codes.",
+  "keywords": ["redis", "token", "code"],
+  "main": "dist/index.js",
+  "exports": "dist/index.js",
+  "repository": "https://gitlab.com/soufan/packages/ephemeral-codes.git",
+  "author": {
+    "name": "Fábio Priamo",
+    "email": "fabio@soufan.com.br",
+    "url": "https://github.com/grigos"
+  },
+  "contributors": [
+    {
+      "name" : "Rodrigo F. Martins",
+      "email" : "rodrigo@soufan.com.br",
+      "url" : "https://github.com/grigos"
+    }
+  ],
+  "license": "UNLICENSED",
+  "private": false,
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "NODE_ENV=test jest --detectOpenHandles --forceExit",
+    "lint": "eslint src/*",
+    "commit": "git-cz",
+    "build": "babel --config-file ./build.babelrc.json src --out-dir dist"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "babel-jest": "^26.0.1",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "ioredis": "^4.16.3",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
