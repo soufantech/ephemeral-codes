@@ -1,0 +1,7 @@
+*
+!/src/**
+!/lib/**
+!wrapper.mjs
+**/__tests__/**
+**/__mocks__/**
+**/__fixtures__/**
