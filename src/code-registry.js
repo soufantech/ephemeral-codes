@@ -1,7 +1,7 @@
-import generateCode from './generate-code';
-import { identitySerializer } from './serializers';
+const generateCode = require('./generate-code');
+const { identitySerializer } = require('./serializers');
 
-export const ExpirationTime = {
+const ExpirationTime = {
   FifteenMins: 900,
   ThirtyMins: 1800,
   OneHour: 3600,
@@ -14,7 +14,7 @@ export const ExpirationTime = {
 /**
  * A registry for codes.
  */
-export class CodeRegistry {
+class CodeRegistry {
   constructor(redis, baseKey, options = {}) {
     const {
       expiresIn = ExpirationTime.OneHour,
@@ -80,3 +80,8 @@ export class CodeRegistry {
     return this._redis.ttl(codeKey);
   }
 }
+
+module.exports = {
+  CodeRegistry,
+  ExpirationTime,
+};

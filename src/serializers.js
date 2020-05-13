@@ -1,4 +1,4 @@
-export const identitySerializer = {
+const identitySerializer = {
   serialize(data) {
     return data;
   },
@@ -8,7 +8,7 @@ export const identitySerializer = {
   },
 };
 
-export const jsonSerializer = {
+const jsonSerializer = {
   serialize(data) {
     return JSON.stringify(data);
   },
@@ -16,4 +16,9 @@ export const jsonSerializer = {
   deserialize(data) {
     return JSON.parse(data);
   },
+};
+
+module.exports = {
+  jsonSerializer,
+  identitySerializer,
 };

@@ -1,7 +1,7 @@
-import { ExpirationTime } from '../code-registry';
-import { RenewableCodeRegistry } from '../renewable-code-registry';
-import { jsonSerializer } from '../serializers';
-import getRedis from './get-redis';
+const { ExpirationTime } = require('../code-registry');
+const { RenewableCodeRegistry } = require('../renewable-code-registry');
+const { jsonSerializer } = require('../serializers');
+const getRedis = require('./get-redis');
 
 beforeEach(() => {
   return getRedis().then(redis => redis.flushdb());

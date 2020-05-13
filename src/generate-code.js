@@ -1,7 +1,7 @@
 /**
  * Generates aphanumeric uppercase codes like '1AQ9D8'.
  */
-export default function generateCode(size = 6) {
+function generateCode(size = 6) {
   return (
     [...Array(size)]
       // eslint-disable-next-line no-bitwise
@@ -10,3 +10,5 @@ export default function generateCode(size = 6) {
       .toUpperCase()
   );
 }
+
+module.exports = generateCode;

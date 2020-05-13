@@ -1,4 +1,4 @@
-import generateCode from '../generate-code';
+const generateCode = require('../generate-code');
 
 describe('generateCode', () => {
   it('generates aphanumeric 6 digit uppercase codes.', () => {

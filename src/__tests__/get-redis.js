@@ -1,4 +1,4 @@
-import Redis from 'ioredis';
+const Redis = require('ioredis');
 
 const redis = new Redis({
   host: process.env.REDIS_HOST,
@@ -12,6 +12,6 @@ const redisPromise = new Promise((resolve, reject) => {
   redis.on('error', reject);
 });
 
-export default () => {
+module.exports = () => {
   return redisPromise;
 };

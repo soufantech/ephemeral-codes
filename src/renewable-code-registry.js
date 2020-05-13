@@ -1,4 +1,4 @@
-import { CodeRegistry } from './code-registry';
+const { CodeRegistry } = require('./code-registry');
 
 const sumAffectedRecords = results => {
   return results.reduce((affected, [, result]) => {
@@ -13,7 +13,7 @@ const sumAffectedRecords = results => {
  * under the key `meta:*`. Everytime a new code is generated,
  * the former code associated with the UID is replaced by it.
  */
-export class RenewableCodeRegistry extends CodeRegistry {
+class RenewableCodeRegistry extends CodeRegistry {
   constructor(redis, baseKey, options = {}) {
     super(redis, baseKey, options);
 
@@ -86,3 +86,7 @@ export class RenewableCodeRegistry extends CodeRegistry {
       .then(sumAffectedRecords);
   }
 }
+
+module.exports = {
+  RenewableCodeRegistry,
+};
