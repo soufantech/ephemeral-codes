@@ -1,7 +1,7 @@
 const { ExpirationTime } = require('../code-registry');
 const { RenewableCodeRegistry } = require('../renewable-code-registry');
 const { JsonSerializer } = require('../serializers');
-const getRedis = require('./get-redis');
+const getRedis = require('./helpers/get-redis');
 
 beforeEach(() => {
   return getRedis().then(redis => redis.flushdb());

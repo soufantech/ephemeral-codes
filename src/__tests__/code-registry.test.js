@@ -1,7 +1,7 @@
 const { CodeRegistry, ExpirationTime } = require('../code-registry');
 const { JsonSerializer } = require('../serializers');
 const generateCode = require('../generate-code');
-const getRedis = require('./get-redis');
+const getRedis = require('./helpers/get-redis');
 
 beforeEach(() => {
   return getRedis().then(redis => redis.flushdb());
