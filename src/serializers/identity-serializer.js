@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 class IdentitySerializer {
   constructor({ resolveUid } = {}) {
     if (typeof resolveUid === 'function') {
