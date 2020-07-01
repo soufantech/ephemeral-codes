@@ -1,5 +1,5 @@
 const { CodeRegistry, ExpirationTime } = require('../code-registry');
-const { jsonSerializer } = require('../serializers');
+const { JsonSerializer } = require('../serializers');
 const generateCode = require('../generate-code');
 const getRedis = require('./get-redis');
 
@@ -51,10 +51,13 @@ describe('CodeRegistry', () => {
     it('registers a code with a data serializer.', async () => {
       const redis = await getRedis();
       const voucherCode = new CodeRegistry(redis, 'voucher', {
-        serializer: jsonSerializer,
+        serializer: new JsonSerializer({
+          resolveUid: data => data.id,
+        }),
       });
 
       const VOUCHER_DATA = {
+        id: '76e372c2-a8d1-4ed2-be84-adf2856d68f0',
         discount: '1630',
         establishment: 'Special Burguer',
       };

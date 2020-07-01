@@ -1,5 +1,5 @@
 const generateCode = require('./generate-code');
-const { identitySerializer } = require('./serializers');
+const { IdentitySerializer } = require('./serializers');
 
 const ExpirationTime = {
   FifteenMins: 900,
@@ -18,7 +18,7 @@ class CodeRegistry {
   constructor(redis, baseKey, options = {}) {
     const {
       expiresIn = ExpirationTime.OneHour,
-      serializer = identitySerializer,
+      serializer = new IdentitySerializer(),
       codeGenerator = generateCode,
     } = options;
 
@@ -48,7 +48,7 @@ class CodeRegistry {
     } = options;
 
     const codeKey = this._assembleCodeKey(code);
-    const serializedData = this._serialize(data);
+    const { data: serializedData } = this._serialize(data);
 
     await this._redis.set(codeKey, serializedData, 'EX', expiresIn);
 
@@ -59,7 +59,9 @@ class CodeRegistry {
     const codeKey = this._assembleCodeKey(code);
     const data = await this._redis.get(codeKey);
 
-    return this._deserialize(data);
+    if (data === null) return null;
+
+    return this._deserialize(data).data;
   }
 
   refresh(code, expiresIn) {

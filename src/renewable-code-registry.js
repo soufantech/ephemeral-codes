@@ -14,14 +14,6 @@ const sumAffectedRecords = results => {
  * the former code associated with the UID is replaced by it.
  */
 class RenewableCodeRegistry extends CodeRegistry {
-  constructor(redis, baseKey, options = {}) {
-    super(redis, baseKey, options);
-
-    const { resolveUid = data => data } = options;
-
-    this._resolveUid = resolveUid;
-  }
-
   _assembleMetaKey(uid) {
     return `meta:${this._assembleCodeKey(uid)}`;
   }
@@ -32,8 +24,7 @@ class RenewableCodeRegistry extends CodeRegistry {
       expiresIn = this._expiresIn,
     } = options;
 
-    const serializedData = this._serialize(data);
-    const uid = this._resolveUid(data);
+    const { data: serializedData, uid } = this._serialize(data);
     const codeKey = this._assembleCodeKey(code);
     const metaKey = this._assembleMetaKey(uid);
 
@@ -56,8 +47,7 @@ class RenewableCodeRegistry extends CodeRegistry {
 
     if (serializedData === null) return 0;
 
-    const data = this._deserialize(serializedData);
-    const uid = this._resolveUid(data);
+    const { uid } = this._deserialize(serializedData);
     const metaKey = this._assembleMetaKey(uid);
 
     return this._redis
@@ -74,8 +64,7 @@ class RenewableCodeRegistry extends CodeRegistry {
 
     if (serializedData === null) return 0;
 
-    const data = this._deserialize(serializedData);
-    const uid = this._resolveUid(data);
+    const { uid } = this._deserialize(serializedData);
     const metaKey = this._assembleMetaKey(uid);
 
     return this._redis
