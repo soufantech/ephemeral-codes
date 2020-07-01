@@ -1,7 +1,7 @@
 const { ExpirationTime } = require('../code-registry');
 const { RenewableCodeRegistry } = require('../renewable-code-registry');
-const { jsonSerializer } = require('../serializers');
-const getRedis = require('./get-redis');
+const { JsonSerializer } = require('../serializers');
+const getRedis = require('./helpers/get-redis');
 
 beforeEach(() => {
   return getRedis().then(redis => redis.flushdb());
@@ -30,14 +30,15 @@ describe('RenewableCodeRegistry', () => {
       expect(laterData).toBeDefined();
     });
 
-    it('renews code on every registration with a UID resolver.', async () => {
+    it('renews code on every registration with a custom serializer.', async () => {
       const redis = await getRedis();
       const passwordResetCodes = new RenewableCodeRegistry(
         redis,
         'password-reset',
         {
-          serializer: jsonSerializer,
-          resolveUid: ({ email }) => email,
+          serializer: new JsonSerializer({
+            resolveUid: data => data.email,
+          }),
         }
       );
 

@@ -1,7 +1,7 @@
 {
   "name": "@soufantech/ephemeral-codes",
-  "version": "1.0.0-rc.3",
-  "description": "Manage CRUD operations on ephemeral token codes.",
+  "version": "1.0.0-rc.4",
+  "description": "Generates and manages token codes suitable to be used in password recovery, registration and many other use cases.",
   "keywords": [
     "redis",
     "token",
