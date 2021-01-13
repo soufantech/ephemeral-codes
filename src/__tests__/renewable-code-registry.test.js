@@ -3,9 +3,7 @@ const { RenewableCodeRegistry } = require('../renewable-code-registry');
 const { JsonSerializer } = require('../serializers');
 const getRedis = require('./helpers/get-redis');
 
-beforeEach(() => {
-  return getRedis().then(redis => redis.flushdb());
-});
+beforeEach(() => getRedis().then((redis) => redis.flushdb()));
 
 describe('RenewableCodeRegistry', () => {
   describe('code registration', () => {
@@ -37,7 +35,7 @@ describe('RenewableCodeRegistry', () => {
         'password-reset',
         {
           serializer: new JsonSerializer({
-            resolveUid: data => data.email,
+            resolveUid: (data) => data.email,
           }),
         }
       );

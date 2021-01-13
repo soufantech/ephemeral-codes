@@ -1,10 +1,7 @@
 const { CodeRegistry } = require('./code-registry');
 
-const sumAffectedRecords = results => {
-  return results.reduce((affected, [, result]) => {
-    return affected + parseInt(result, 10);
-  }, 0);
-};
+const sumAffectedRecords = (results) =>
+  results.reduce((affected, [, result]) => affected + parseInt(result, 10), 0);
 
 /**
  * A registry for renewable codes.
