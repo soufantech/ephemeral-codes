@@ -15,7 +15,7 @@ describe('JsonSerializer', () => {
 
   it('serializes an object as json.', () => {
     const jsonSerializer = new JsonSerializer({
-      resolveUid: data => data.id,
+      resolveUid: (data) => data.id,
     });
 
     const PAYLOAD = {
@@ -32,7 +32,7 @@ describe('JsonSerializer', () => {
 
   it('deserializes an object from a json string.', () => {
     const jsonSerializer = new JsonSerializer({
-      resolveUid: data => data.id,
+      resolveUid: (data) => data.id,
     });
 
     const PAYLOAD = {

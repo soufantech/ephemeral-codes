@@ -1,50 +1,64 @@
 {
   "name": "@soufantech/ephemeral-codes",
-  "version": "1.0.0-rc.4",
-  "description": "Generates and manages token codes suitable to be used in password recovery, registration and many other use cases.",
+  "version": "1.0.0",
+  "description": "Manages temporary codes for password recovery, user registration and other use-cases.",
   "keywords": [
     "redis",
     "token",
-    "code"
+    "code",
+    "password",
+    "registration"
   ],
   "main": "./src/index.js",
   "exports": {
     "require": "./src/index.js",
     "import": "./wrapper.mjs"
   },
-  "repository": "https://gitlab.com/soufan/packages/ephemeral-codes.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soufantech/ephemeral-codes.git"
+  },
+  "homepage": "https://github.com/soufantech/ephemeral-codes#readme",
+  "bugs": {
+    "url": "https://github.com/soufantech/ephemeral-codes/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access:": "public"
+  },
   "author": {
     "name": "Fábio Priamo",
     "email": "fabio@soufan.com.br",
-    "url": "https://github.com/grigos"
+    "url": "https://github.com/fhpriamo"
   },
   "contributors": [
     {
       "name": "Rodrigo F. Martins",
       "email": "rodrigo@soufan.com.br",
-      "url": "https://github.com/grigos"
+      "url": "https://github.com/drigos"
     }
   ],
-  "license": "UNLICENSED",
   "private": false,
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "jest --detectOpenHandles --forceExit",
+    "lint": "eslint ./src",
+    "prepublishOnly": "npm run test --silent"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "3.1.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "3.3.0",
     "dotenv": "^8.2.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.2.3",
-    "ioredis": "^4.16.3",
-    "jest": "^25.1.0",
-    "prettier": "^1.19.1"
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.7",
+    "ioredis": "^4.19.4",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
   },
   "config": {
     "commitizen": {

@@ -27,7 +27,7 @@ describe('IdentitySerializer', () => {
 
   it('serializes a payload using a custom uid resolver.', () => {
     const idSerializer = new IdentitySerializer({
-      resolveUid: email => email.split('@')[0],
+      resolveUid: (email) => email.split('@')[0],
     });
 
     const PAYLOAD = 'someemail@someprovider.com';
@@ -40,7 +40,7 @@ describe('IdentitySerializer', () => {
 
   it('deserializes a payload using a custom uid resolver.', () => {
     const idSerializer = new IdentitySerializer({
-      resolveUid: email => email.split('@')[0],
+      resolveUid: (email) => email.split('@')[0],
     });
 
     const PAYLOAD = 'someemail@someprovider.com';

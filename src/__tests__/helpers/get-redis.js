@@ -12,6 +12,4 @@ const redisPromise = new Promise((resolve, reject) => {
   redis.on('error', reject);
 });
 
-module.exports = () => {
-  return redisPromise;
-};
+module.exports = () => redisPromise;

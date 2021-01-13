@@ -3,9 +3,7 @@ const { JsonSerializer } = require('../serializers');
 const generateCode = require('../generate-code');
 const getRedis = require('./helpers/get-redis');
 
-beforeEach(() => {
-  return getRedis().then(redis => redis.flushdb());
-});
+beforeEach(() => getRedis().then((redis) => redis.flushdb()));
 
 describe('CodeRegistry', () => {
   describe('code registration', () => {
@@ -52,7 +50,7 @@ describe('CodeRegistry', () => {
       const redis = await getRedis();
       const voucherCode = new CodeRegistry(redis, 'voucher', {
         serializer: new JsonSerializer({
-          resolveUid: data => data.id,
+          resolveUid: (data) => data.id,
         }),
       });
 
