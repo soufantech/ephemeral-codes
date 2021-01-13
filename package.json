@@ -22,7 +22,7 @@
   "bugs": {
     "url" : "https://github.com/soufantech/ephemeral-codes/issues"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
     "access:": "public"
   },
