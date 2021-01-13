@@ -20,16 +20,18 @@
 
 ## 💾 Installation:
 
-You can install this package with yarn:
+@soufantech/ephemeral-codes depends on [ioredis](https://github.com/luin/ioredis) version ^4. Be sure to install it if you don't have it already in your project.
+
+You can install this package (and ioredis) with yarn:
 
 ```console
-yarn add @soufantech/ephemeral-codes
+yarn add ioredis@^4 @soufantech/ephemeral-codes
 ```
 
 or npm:
 
 ```console
-npm install @soufantech/ephemeral-codes
+npm install ioredis@^4 @soufantech/ephemeral-codes
 ```
 
 ## 🚴 Usage:
