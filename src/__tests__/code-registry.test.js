@@ -5,6 +5,13 @@ const getRedis = require('./helpers/get-redis');
 
 beforeEach(() => getRedis().then((redis) => redis.flushdb()));
 
+afterAll(
+  () =>
+    new Promise((resolve) => {
+      getRedis().then((r) => r.quit(resolve));
+    })
+);
+
 describe('CodeRegistry', () => {
   describe('code registration', () => {
     it('registers a code.', async () => {

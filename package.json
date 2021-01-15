@@ -40,7 +40,7 @@
   ],
   "private": false,
   "scripts": {
-    "test": "jest --detectOpenHandles --forceExit",
+    "test": "jest",
     "lint": "eslint ./src",
     "prepublishOnly": "npm run test --silent"
   },
